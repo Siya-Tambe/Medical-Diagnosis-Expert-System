@@ -1,0 +1,123 @@
+{
+  "_meta": {
+    "system_name": "Medical Expert System Using Rule-Based Inference",
+    "course_context": "College AI Mini-Project Demonstration",
+    "reasoning_method": "Forward Chaining (Data-Driven)",
+    "disclaimer": "This is strictly an educational artificial intelligence demonstration of rule-based inference. It is NOT a clinical diagnosis tool and does NOT provide medical advice or prescriptions."
+  },
+  "symptoms_dictionary": {
+    "fever": "Fever (High body temperature)",
+    "cough": "Persistent Cough",
+    "sore_throat": "Sore Throat",
+    "runny_nose": "Runny or Stuffy Nose",
+    "headache": "Headache",
+    "fatigue": "Fatigue / Body Weakness",
+    "nausea": "Nausea",
+    "vomiting": "Vomiting",
+    "shortness_of_breath": "Shortness of Breath / Breathing Difficulty",
+    "chest_pain": "Chest Pain / Tightness",
+    "loss_of_taste_or_smell": "Loss of Taste or Smell"
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "name": "Respiratory Irritation Induction",
+      "if_all": ["fever", "cough"],
+      "then_add": "respiratory_involvement",
+      "conclusion_text": "Intermediate Fact: Evidence of respiratory involvement detected.",
+      "explanation": "When both fever and cough are present, the system infers an intermediate state of respiratory involvement.",
+      "is_intermediate": true,
+      "is_urgent": false
+    },
+    {
+      "id": "R2",
+      "name": "Upper Respiratory Symptom Pattern",
+      "if_all": ["respiratory_involvement", "sore_throat"],
+      "then_add": "upper_respiratory_pattern",
+      "conclusion_text": "Pattern consistent with Upper Respiratory Irritation (Educational Example).",
+      "explanation": "Triggered by intermediate fact 'respiratory_involvement' combined with 'sore_throat'.",
+      "is_intermediate": false,
+      "is_urgent": false
+    },
+    {
+      "id": "R3",
+      "name": "Mild Rhinitis Pattern",
+      "if_all": ["runny_nose", "sore_throat", "cough"],
+      "then_add": "mild_rhinitis_pattern",
+      "conclusion_text": "Pattern consistent with common cold/mild rhinitis symptoms (Educational Example).",
+      "explanation": "Triggered when runny nose, sore throat, and cough are all selected.",
+      "is_intermediate": false,
+      "is_urgent": false
+    },
+    {
+      "id": "R4",
+      "name": "Gastrointestinal Distress Pattern",
+      "if_all": ["nausea", "vomiting"],
+      "then_add": "gastrointestinal_distress_pattern",
+      "conclusion_text": "Pattern consistent with acute gastrointestinal distress (Educational Example).",
+      "explanation": "Triggered when both nausea and vomiting are reported.",
+      "is_intermediate": false,
+      "is_urgent": false
+    },
+    {
+      "id": "R5",
+      "name": "Acute Systemic Malaise Pattern",
+      "if_all": ["fever", "headache", "fatigue"],
+      "then_add": "systemic_malaise_pattern",
+      "conclusion_text": "Pattern consistent with generalized systemic viral or febrile malaise (Educational Example).",
+      "explanation": "Triggered when fever, headache, and fatigue are concurrently present.",
+      "is_intermediate": false,
+      "is_urgent": false
+    },
+    {
+      "id": "R6",
+      "name": "Compound Febrile Respiratory Pattern",
+      "if_all": ["upper_respiratory_pattern", "fatigue"],
+      "then_add": "compound_respiratory_fatigue_pattern",
+      "conclusion_text": "Pattern consistent with flu-like febrile respiratory presentation (Educational Example).",
+      "explanation": "Multi-step inference: Fired from derived 'upper_respiratory_pattern' plus fact 'fatigue'.",
+      "is_intermediate": false,
+      "is_urgent": false
+    },
+    {
+      "id": "R7",
+      "name": "Urgent Respiratory Assessment Flag",
+      "if_all": ["respiratory_involvement", "shortness_of_breath"],
+      "then_add": "urgent_respiratory_alert",
+      "conclusion_text": "ALERT: Respiratory involvement with shortness of breath requires immediate clinical evaluation.",
+      "explanation": "Triggered when respiratory involvement occurs alongside breathing difficulty.",
+      "is_intermediate": false,
+      "is_urgent": true
+    },
+    {
+      "id": "R8",
+      "name": "Emergency Chest Symptom Flag",
+      "if_all": ["chest_pain"],
+      "then_add": "emergency_cardiovascular_alert",
+      "conclusion_text": "EMERGENCY ALERT: Chest pain reported. Requires prompt emergency medical evaluation.",
+      "explanation": "Chest pain is a critical red-flag symptom that mandates immediate professional care.",
+      "is_intermediate": false,
+      "is_urgent": true
+    },
+    {
+      "id": "R9",
+      "name": "Tension and Exhaustion Pattern",
+      "if_all": ["headache", "fatigue"],
+      "then_add": "tension_exhaustion_pattern",
+      "conclusion_text": "Pattern consistent with fatigue-related tension or physical exhaustion (Educational Example).",
+      "explanation": "Triggered by concurrent headache and fatigue in the absence of fever.",
+      "is_intermediate": false,
+      "is_urgent": false
+    },
+    {
+      "id": "R10",
+      "name": "Chemosensory Disturbance Pattern",
+      "if_all": ["loss_of_taste_or_smell", "cough"],
+      "then_add": "chemosensory_respiratory_pattern",
+      "conclusion_text": "Pattern consistent with chemosensory disturbance linked with respiratory symptoms (Educational Example).",
+      "explanation": "Triggered when loss of taste or smell is accompanied by a persistent cough.",
+      "is_intermediate": false,
+      "is_urgent": false
+    }
+  ]
+}
